@@ -28,10 +28,10 @@
 # ===============================================================================
 
 # Tissue type (used for output file naming)
-TISSUE_TYPE <- "pancreas"  # Change to: "brain", "liver", "lung", etc.
+TISSUE_TYPE <- "Generic_Tissue_Type"  # Change to: "brain", "liver", "lung", etc.
 
 # Input file path
-BASE_DATA_PATH <- "F:/Xenium_Data"  # Base directory for Xenium data
+BASE_DATA_PATH <- "/Xenium_Data"  # Base directory for Xenium data
 DATA_DIRECTORY <- file.path(BASE_DATA_PATH, TISSUE_TYPE)
 INPUT_H5_FILE <- file.path(DATA_DIRECTORY, "cell_feature_matrix.h5")
 
@@ -179,88 +179,9 @@ cat("===========================================================================
 # Example structures for different tissues are provided below.
 # Uncomment and modify the appropriate section for your tissue type.
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EXAMPLE 1: PANCREATIC TISSUE (including PDAC and tumor microenvironment)
-# ─────────────────────────────────────────────────────────────────────────────
-
-marker_genes <- list(
-  # Normal Pancreatic Cell Types
-  Acinar_Cells = c("CPA1", "PRSS1", "AMY2A", "CELA3A", "CELA2A", "CELA1", "REG1A", "REG3A", "SPINK1"),
-  Ductal_Cells = c("KRT19", "SOX9", "CFTR", "SPP1", "CA2", "HNF1B", "TFF1", "ANXA4", "MMP7"),
-  Beta_Cells = c("INS", "IAPP", "MAFA", "PDX1", "NKX6-1", "PCSK1", "PCSK2"),
-  Alpha_Cells = c("GCG", "ARX", "IRX2", "MAFB", "TTR"),
-  Delta_Cells = c("SST", "HHEX", "RGS2", "LEPR"),
-  PP_Cells = c("PPY", "PAX6", "NEUROD1"),
-  
-  # PDAC Malignant Cells
-  PDAC_Malignant = c("KRAS", "TP53", "CDKN2A", "SMAD4", "CEACAM6", "MUC1", "EPCAM", "S100P", "MSLN"),
-  Classical_PDAC = c("GATA6", "HNF1A", "CFTR", "AGR2"),
-  Basal_PDAC = c("KRT5", "KRT14", "TP63", "S100A2", "DSG3"),
-  
-  # Cancer-Associated Fibroblasts
-  Myofibroblasts_myCAF = c("ACTA2", "TAGLN", "PDGFRB", "COL3A1", "POSTN", "FAP", "COL1A1", "MMP11"),
-  Inflammatory_iCAF = c("CXCL12", "IL6", "HAS1", "PDGFRA", "IL1B", "CFD"),
-  Antigen_Presenting_CAF = c("CD74", "HLA-DRA", "HLA-DRB1", "CIITA"),
-  
-  # Endothelial & Vascular
-  Endothelial = c("PECAM1", "VWF", "CD34", "FLT1", "KDR", "CLDN5", "PLVAP"),
-  Pericytes = c("PDGFRB", "DES", "RGS5", "ACTA2", "KCNJ8"),
-  
-  # Immune Cells - Lymphoid
-  T_Cells = c("CD3D", "CD3E", "CD4", "CD8A", "CD8B", "IL7R"),
-  CD4_T_Cells = c("CD4", "IL7R", "FOXP3"),
-  CD8_T_Cells = c("CD8A", "CD8B", "GZMB", "PRF1"),
-  Treg = c("FOXP3", "IL2RA", "CTLA4"),
-  Exhausted_T = c("PDCD1", "HAVCR2", "LAG3", "TIGIT"),
-  B_Cells = c("CD79A", "MS4A1", "CD19", "CD27", "IGHM"),
-  Plasma_Cells = c("JCHAIN", "SDC1", "IGHG1", "MZB1"),
-  NK_Cells = c("NCAM1", "KLRD1", "NKG7", "GNLY", "KLRB1"),
-  
-  # Immune Cells - Myeloid
-  Macrophages = c("CD68", "CD163", "MSR1", "MRC1", "IL10", "TGFB1"),
-  M1_Macrophages = c("CD68", "IL1B", "NOS2", "TNF", "CXCL9"),
-  M2_Macrophages = c("CD163", "MRC1", "MSR1", "IL10", "TGFB1"),
-  TAM_SPP1 = c("SPP1", "CD68", "APOE"),
-  TAM_C1Q = c("C1QC", "C1QA", "C1QB", "APOC1"),
-  Monocytes = c("CD14", "LYZ", "S100A8", "S100A9", "FCN1"),
-  Dendritic_Cells = c("ITGAX", "CD1C", "CLEC9A", "LAMP3", "CCR7"),
-  Mast_Cells = c("KIT", "TPSAB1", "CPA3"),
-  Neutrophils = c("S100A8", "S100A9", "FCGR3B", "CSF3R")
-)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# EXAMPLE 2: BRAIN TISSUE (uncomment to use)
-# ─────────────────────────────────────────────────────────────────────────────
-
-# marker_genes <- list(
-#   Excitatory_Neurons = c("SLC17A7", "CAMK2A", "NEUROD6", "SATB2", "TBR1"),
-#   Inhibitory_Neurons = c("GAD1", "GAD2", "SLC32A1", "PVALB", "SST", "VIP"),
-#   Astrocytes = c("GFAP", "AQP4", "SLC1A2", "SLC1A3", "ALDH1L1"),
-#   Oligodendrocytes = c("MBP", "MOG", "PLP1", "MAG", "MOBP"),
-#   OPCs = c("PDGFRA", "CSPG4", "VCAN", "OLIG1", "OLIG2"),
-#   Microglia = c("CX3CR1", "P2RY12", "TMEM119", "CSF1R", "AIF1"),
-#   Endothelial = c("PECAM1", "VWF", "CLDN5", "FLT1"),
-#   Pericytes = c("PDGFRB", "RGS5", "ACTA2", "KCNJ8")
-# )
-
-# ─────────────────────────────────────────────────────────────────────────────
-# EXAMPLE 3: LIVER TISSUE (uncomment to use)
-# ─────────────────────────────────────────────────────────────────────────────
-
-# marker_genes <- list(
-#   Hepatocytes = c("ALB", "APOA1", "APOB", "TTR", "HP", "TF"),
-#   Cholangiocytes = c("KRT19", "KRT7", "EPCAM", "SOX9", "CFTR"),
-#   Hepatic_Stellate = c("ACTA2", "COL1A1", "PDGFRB", "DES", "VIM"),
-#   Kupffer_Cells = c("CD68", "CLEC4F", "VSIG4", "CD163", "MARCO"),
-#   LSECs = c("PECAM1", "VWF", "FCN2", "LYVE1", "STAB2"),
-#   Portal_Fibroblasts = c("COL1A1", "COL3A1", "DCN", "THY1"),
-#   T_Cells = c("CD3D", "CD3E", "CD8A", "CD4"),
-#   B_Cells = c("CD79A", "MS4A1", "CD19"),
-#   NK_Cells = c("NCAM1", "KLRD1", "NKG7", "GNLY")
-# )
-
-# ─────────────────────────────────────────────────────────────────────────────
-# EXAMPLE 4: GENERIC PLACEHOLDER MARKERS (uncomment to use as template)
+# EXAMPLE: GENERIC PLACEHOLDER MARKERS (uncomment to use as template)
 # ─────────────────────────────────────────────────────────────────────────────
 
 # marker_genes <- list(
